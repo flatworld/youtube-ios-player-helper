@@ -60,6 +60,16 @@ typedef NS_ENUM(NSInteger, YTPlayerError) {
  */
 @protocol YTPlayerViewDelegate<NSObject>
 
+/**
+ * Support for Application Extensions requires the limiting of available API.
+ * This protocol allows the consuming application to selected a reciever to
+ * be responsible for calling `[[UIApplication sharedApplication] openURL:url];`.
+ * 
+ * @param playerView The YTPlayerView instance which is requesting url opening.
+ * @param url The NSURL which the reciever has responsiblity to open.
+ */
+- (void)playerView:(nonnull YTPlayerView *)playerView opensURL:(nonnull NSURL*)url;
+
 @optional
 /**
  * Invoked when the player view is ready to receive API calls.
